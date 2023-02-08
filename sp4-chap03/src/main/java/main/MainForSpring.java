@@ -67,6 +67,7 @@ public class MainForSpring {
 		 * 스프링컨테이너로 부터 객체 주입을 통해 MemberRegisterService 빈 객체 구한다.
 		 */
 		MemberRegisterService registerService = applicationContext.getBean("memberRegSvc", MemberRegisterService.class);
+		
 		RegisterRequest registerRequest = new RegisterRequest();
 		
 		registerRequest.setEmail(split[1]);

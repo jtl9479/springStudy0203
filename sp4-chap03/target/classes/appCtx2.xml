@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="memberDao" class="spring.MemberDao">
+	</bean>
+
+	<bean id="memberPrinter" class="spring.MemberPrinter">
+	</bean>
+
+<!-- 
+	name : 의존 객체를 주입할 때 사용할 설정 메소드의 프로퍼티 이름
+	ref	 : 주입할 의존 객체에 해당하는 빈 객체의 식별값 (java에서 사용할것)
+ -->
+	<bean id="memberInfoPrinter" class="spring.MemberInfoPrinter">
+		<property name="memberDao" ref="memberDao" />
+		<property name="memberPrinter" ref="memberPrinter" />
+	</bean>
+
+</beans>

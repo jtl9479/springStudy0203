@@ -12,6 +12,10 @@
 		</bean>
 		
 		<!-- spring.MemberRegisterService memberRegSvc = new spring.MemberRegisterService(memberDao) -->
+		<!-- 
+			id -> 객체명 ref명과 동일해야함
+			ref명은 해당  id와 동일해야함
+		 -->
 		<bean id="memberRegSvc" class="spring.MemberRegisterService">
 			<constructor-arg ref="memberDao" /><!-- 생성자안에 들어갈 파라미터 -->
 		</bean>
