@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+	<!-- 
+		MemberDao 타입의 빈객체를 생성해서 memberDao 라는 이름으로 보관하겠다. 
+	 -->
+		<!-- spring.MemberDao memberDao = new spring.MemberDao() -->	
+		<bean id="memberDao" class="spring.MemberDao">
+		</bean>
+		
+		<!-- spring.MemberRegisterService memberRegSvc = new spring.MemberRegisterService(memberDao) -->
+		<bean id="memberRegSvc" class="spring.MemberRegisterService">
+			<constructor-arg ref="memberDao" /><!-- 생성자안에 들어갈 파라미터 -->
+		</bean>
+		
+		<!-- spring.ChangePasswordService changePwdSvc = new spring.ChangePasswordService(memberDao) -->
+		<bean id="changePwdSvc" class="spring.ChangePasswordService">
+			<constructor-arg ref="memberDao" /><!-- 생성자안에 들어갈 파라미터 -->
+		</bean>
+		
+		<bean id="memberPrinter" class="spring.MemberPrinter">
+		</bean>
+		
+		<bean id="memberListPrinter" class="spring.MemberListPrinter">
+			<constructor-arg ref="memberDao" /><!-- 생성자안에 들어갈 파라미터 -->
+			<constructor-arg ref="memberPrinter" /><!-- 생성자안에 들어갈 파라미터 -->
+		</bean>
+		
+		<!-- 설정파일 끝 -->
+</beans>
